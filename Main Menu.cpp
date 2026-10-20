@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 
-// This saves us from writing "std::" in front of cout/cin/string.
 using namespace std;
 
 // A function that "clears" the screen.
@@ -20,7 +19,7 @@ void clearScreen() {
 // "selected" tells us which option is currently highlighted (0 to 3).
 void drawMenu(int selected) {
 
-    // An array (a list) holding the names of our menu options.
+    // An array holding the names of our menu options.
     string options[4] = { "NEW GAME", "LOAD GAME", "CONFIG", "QUIT" };
 
     // The top border and title.
