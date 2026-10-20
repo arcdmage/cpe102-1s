@@ -5,13 +5,13 @@ This is our final project for the first semester of CPE102 (Programming Logic an
 
 GENRE: Mystery, Detective, Puzzle, Turn-based RPG, Dungeoncrawler
 
-# SYNOPSIS:
+SYNOPSIS:
 The Moonlit Pearl Earrings have been stolen from a mansion, and you are the detective assigned to solve the case. Examine the case file, question the suspects, and uncover the truth behind the theft. Can you identify the culprit?
 
-# GAME OBJECTIVE:
+GAME OBJECTIVE:
 Identify the thief by examining the case file and questioning the suspects.
 
-# CORE MECHANICS:
+CORE MECHANICS:
 The game follows a non-linear investigation system, allowing the player to freely move through array-made character movement with real-time updated movement (WASD), navigate between the case file, suspect interviews, and final accusation.
 The player is provided with a case file containing details about the theft, including the time it occurred and the available evidence.
 The player can interview suspects, examine their testimonies, and question their statements to uncover inconsistencies.
