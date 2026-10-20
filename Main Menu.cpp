@@ -20,7 +20,7 @@ void clearScreen() {
 void drawMenu(int selected) {
 
     // An array holding the names of our menu options.
-    string options[4] = { "NEW GAME", "LOAD GAME", "CONFIG", "QUIT" };
+    string options[4] = { "NEW GAME", "LOAD GAME", "INSTRUCTION", "QUIT" };
 
     // The top border and title.
     cout << "\n";
@@ -119,7 +119,7 @@ int main() {
                     cout << "      Loading Game...\n";
                     break;
                 case 2:
-                    cout << "      Opening Config...\n";
+                    cout << "      Opening INSTRUCTION...\n";
                     break;
                 case 3:
                     cout << "      Goodbye. See you again!\n";
