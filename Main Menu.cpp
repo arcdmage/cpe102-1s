@@ -22,13 +22,13 @@ void clearScreen() {
 void drawMenu(int selected) {
 
     // An array holding the names of our menu options.
-    string options[4] = { "NEW GAME", "LOAD GAME", "INSTRUCTION", "QUIT" };
+    string options[3] = { "START GAME", "INSTRUCTION", "QUIT" };
     
     // CENTERING SETTINGS
     int consoleWidth  = 100;   // How many characters wide your console is.
     int consoleHeight = 30;    // How many lines tall your console is.
     int frameWidth    = 48;    // How wide our menu frame is (count of characters).
-    int menuHeight    = 21;    // How many lines our menu takes up.
+    int menuHeight    = 16;    // How many lines our menu takes up.
 
     // Horizontal centering: split the leftover space in half.
     int leftPad = (consoleWidth - frameWidth) / 2;
@@ -59,7 +59,7 @@ void drawMenu(int selected) {
     
     // Loop through every option and print it.
     // "i" counts 0, 1, 2, 3 - one number per option.
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 3; i++) {
 
         // Each option is pushed further to the right than the one above it.
         // This creates the slanted "staircase" look.
@@ -115,16 +115,16 @@ int main() {
         if (input == 'w' || input == 'W') {
             selected--;                 // Move up one option.
             if (selected < 0) {
-                selected = 3;           // Wrap around to the bottom.
+                selected = 2;           // Wrap around to the bottom.
             }
         }
         else if (input == 's' || input == 'S') {
             selected++;                 // Move down one option.
-            if (selected > 3) {
+            if (selected > 2) {
                 selected = 0;           // Wrap around to the top.
             }
         }
-        else if (input >= '1' && input <= '4') {
+        else if (input >= '1' && input <= '3') {
             // Characters are stored as numbers, so '1' - '1' = 0,
             // '2' - '1' = 1, and so on. This turns the key into 0-3.
             selected = input - '1';
@@ -141,15 +141,12 @@ int main() {
             // depending on the value of "selected".
             switch (selected) {
                 case 0:
-                    cout << "      Starting New Game...\n";
+                    cout << "      Starting Game...\n";
                     break;      // "break" stops us from falling into the next case.
                 case 1:
-                    cout << "      Loading Game...\n";
-                    break;
-                case 2:
                     cout << "      Opening INSTRUCTION...\n";
                     break;
-                case 3:
+                case 2:
                     cout << "      Goodbye. See you again!\n";
                     running = false;    // This ends the while loop.
                     break;
