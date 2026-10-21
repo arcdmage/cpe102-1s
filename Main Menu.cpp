@@ -131,8 +131,8 @@ int main() {
             input = 'e';                // Pretend they also pressed E.
         }
 
-        //  If the player pressed E (or a number), run the option.
-        if (input == 'e' || input == 'E') {
+        // I replaced it so you just need to press ENTER (NEAT RIGHT@!)
+        if (input == 'e' || input == 'E' || input == '\r') {
 
             clearScreen();
             cout << "\n  ============================================\n\n";
