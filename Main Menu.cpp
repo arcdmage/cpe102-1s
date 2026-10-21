@@ -17,6 +17,58 @@ void clearScreen() {
     }
 }
 
+// A function that shows the instruction screen.
+// It waits for ANY key press, then returns to whoever called it.
+void showInstructions() {
+
+    // CENTERING SETTINGS (same idea as drawMenu)
+    int consoleWidth  = 100;   // How many characters wide your console is.
+    int consoleHeight = 30;    // How many lines tall your console is.
+    int frameWidth    = 48;    // How wide our frame is (count of characters).
+    int contentHeight = 13;    // How many lines this screen takes up.
+                               // Add 1 for every cout line you add!
+
+    // Horizontal centering: split the leftover space in half.
+    int leftPad = (consoleWidth - frameWidth) / 2;
+    string pad(leftPad, ' ');   // A string made of "leftPad" spaces.
+
+    // Vertical centering: split the leftover lines in half.
+    int topPad = (consoleHeight - contentHeight) / 2;
+    int bottomPad = consoleHeight - contentHeight - topPad - 1;   // -1 keeps us inside the window.
+
+    clearScreen();
+
+    // Empty lines above, to push the screen to the middle.
+    for (int i = 0; i < topPad; i++) {
+        cout << "\n";
+    }
+
+    cout << pad << "+==============================================+\n";
+    cout << pad << "|                 INSTRUCTIONS                 |\n";
+    cout << pad << "+----------------------------------------------+\n";
+    cout << "\n";
+
+    // PASTE / EDIT YOUR INSTRUCTION LINES HERE
+    cout << pad << "   1. Replace this with your first instruction.\n";
+    cout << pad << "   2. Replace this with your second instruction.\n";
+    cout << pad << "   3. Replace this with your third instruction.\n";
+    cout << pad << "   4. Replace this with your fourth instruction.\n";
+    cout << pad << "   5. Replace this with your fifth instruction.\n";
+    // Kakapagod mag type tigil ko na dito XD dagdagan nyu nalang pag kaylangan
+
+    cout << "\n";
+    cout << pad << "+----------------------------------------------+\n";
+    cout << pad << "|          PRESS ANY KEY TO CONTINUE           |\n";
+    cout << pad << "+==============================================+\n";
+
+    // Empty lines below, so the screen stays in the middle.
+    for (int i = 0; i < bottomPad; i++) {
+        cout << "\n";
+    }
+
+    _getch();   // Wait for any key (no ENTER needed).
+}
+
 //  A function that draws the whole menu.
 // "selected" tells us which option is currently highlighted (0 to 3).
 void drawMenu(int selected) {
@@ -100,6 +152,8 @@ int main() {
     bool running = true;   // The menu loop keeps going while this is true.
     char input;            // Stores the key the player types.
 
+    showInstructions();    // Show the instructions first, then go to the menu.
+    
     // The main loop. It redraws the menu again and again
     // until the player chooses QUIT (which sets running to false).
     while (running) {
@@ -144,7 +198,7 @@ int main() {
                     cout << "      Starting Game...\n";
                     break;      // "break" stops us from falling into the next case.
                 case 1:
-                    cout << "      Opening INSTRUCTION...\n";
+                    showInstructions();
                     break;
                 case 2:
                     cout << "      Goodbye. See you again!\n";
