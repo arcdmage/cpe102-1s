@@ -1,8 +1,10 @@
 // Include the libraries we need.
 // <iostream> lets us print text (cout) and read keyboard input (cin).
 // <string> lets us use the "string" type to store words.
+// <conio.h> (Windows only) gives us _getch(), which reads a key instantly, without waiting for the player to press ENTER.
 #include <iostream>
 #include <string>
+#include <conio.h>
 
 using namespace std;
 
@@ -21,15 +23,40 @@ void drawMenu(int selected) {
 
     // An array holding the names of our menu options.
     string options[4] = { "NEW GAME", "LOAD GAME", "INSTRUCTION", "QUIT" };
+    
+    // CENTERING SETTINGS
+    int consoleWidth  = 100;   // How many characters wide your console is.
+    int consoleHeight = 30;    // How many lines tall your console is.
+    int frameWidth    = 48;    // How wide our menu frame is (count of characters).
+    int menuHeight    = 21;    // How many lines our menu takes up.
 
+    // Horizontal centering: split the leftover space in half.
+    int leftPad = (consoleWidth - frameWidth) / 2;
+    string pad(leftPad, ' ');   // A string made of "leftPad" spaces.
+
+    // Vertical centering: split the leftover lines in half.
+    int topPad = (consoleHeight - menuHeight) / 2;
+    int bottomPad = consoleHeight - menuHeight - topPad - 1;   // -1 for the input line.
+
+    // Print empty lines above the menu to push it down to the middle.
+    for (int i = 0; i < topPad; i++) {
+        cout << "\n";
+    }
+    
     // The top border and title.
+    cout << pad << "////////// CRIME SCENE - DO NOT CROSS //////////\n";
+    cout << pad << "+==============================================+\n";
+    cout << pad << "| CASE FILE No. 00XX          [ CONFIDENTIAL ] |\n";
+    cout << pad << "+----------------------------------------------+\n";
+    cout << pad << "|                                              |\n";
+    cout << pad << "|               THE MOONLIT HEIST              |\n";
+    cout << pad << "|                                              |\n";
+    cout << pad << "+----------------------------------------------+\n";
+    cout << pad << "|        Santos - Sales - Fabela - Nucum       |\n";
+    cout << pad << "+==============================================+\n";
     cout << "\n";
-    cout << "  ============================================\n";
-    cout << "  ||                                        ||\n";
-    cout << "  ||            The Moonlit Heist           ||\n";
-    cout << "  ||                                        ||\n";
-    cout << "  ============================================\n\n";
 
+    
     // Loop through every option and print it.
     // "i" counts 0, 1, 2, 3 - one number per option.
     for (int i = 0; i < 4; i++) {
@@ -38,7 +65,8 @@ void drawMenu(int selected) {
         // This creates the slanted "staircase" look.
         int indent = 6 + (i * 4);
 
-        // Print empty spaces to move the text to the right.
+        // Print the centering spaces, then the staircase spaces.
+        cout << pad;
         for (int s = 0; s < indent; s++) {
             cout << " ";
         }
@@ -47,22 +75,22 @@ void drawMenu(int selected) {
         if (i == selected) {
             // YES: draw it big and boxed so it stands out.
             cout << "/////////////////////////\n";
+            cout << pad;
             for (int s = 0; s < indent; s++) cout << " ";
             cout << "//>>  " << (i + 1) << ". " << options[i] << "  <<\n";
+            cout << pad; 
             for (int s = 0; s < indent; s++) cout << " ";
             cout << "/////////////////////////\n";
         } else {
             // NO: draw it plain and quiet.
             cout << "     " << (i + 1) << ". " << options[i] << "\n";
         }
-        cout << "\n";
     }
 
-    // Footer with the controls.
-    cout << "  --------------------------------------------\n";
-    cout << "   [W] Up    [S] Down    [E] Select    [1-4]\n";
-    cout << "  --------------------------------------------\n";
-    cout << "   > ";
+    // Print empty lines below the menu so it stays in the middle.
+    for (int i = 0; i < bottomPad; i++) {
+        cout << "\n";
+    }
 }
 
 // The main function - where the program starts running.
@@ -79,7 +107,7 @@ int main() {
         clearScreen();         // Wipe the old menu.
         drawMenu(selected);    // Draw the menu with the current highlight.
 
-        cin >> input;          // Wait for the player to type a key + ENTER.
+        input = _getch();      // Wait for the player to type a key + ENTER.
 
         //  Decide what to do with the key.
         // 'W' and 'S' move the highlight. We accept both
