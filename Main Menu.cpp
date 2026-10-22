@@ -81,13 +81,13 @@ void showInstructions() {
 void drawMenu(int selected) {
 
     // An array holding the names of our menu options.
-    string options[3] = { "INSTRUCTION", "START GAME", "QUIT" };
+    string options[4] = { "INSTRUCTION", "START GAME", "QUIT", "CREDITS" };
     
     // CENTERING SETTINGS
     int consoleWidth  = 100;   // How many characters wide your console is.
     int consoleHeight = 30;    // How many lines tall your console is.
     int frameWidth    = 48;    // How wide our menu frame is (count of characters).
-    int menuHeight    = 16;    // How many lines our menu takes up.
+    int menuHeight    = 21;    // How many lines our menu takes up.
 
     // Horizontal centering: split the leftover space in half.
     int leftPad = (consoleWidth - frameWidth) / 2;
@@ -133,7 +133,7 @@ void drawMenu(int selected) {
     
     // Loop through every option and print it.
     // "i" counts 0, 1, 2, 3 - one number per option.
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
 
         // Each option is pushed further to the right than the one above it.
         // This creates the slanted "staircase" look.
@@ -191,16 +191,16 @@ int main() {
         if (input == 'w' || input == 'W') {
             selected--;                 // Move up one option.
             if (selected < 0) {
-                selected = 2;           // Wrap around to the bottom.
+                selected = 3;           // Wrap around to the bottom.
             }
         }
         else if (input == 's' || input == 'S') {
             selected++;                 // Move down one option.
-            if (selected > 2) {
+            if (selected > 3) {
                 selected = 0;           // Wrap around to the top.
             }
         }
-        else if (input >= '1' && input <= '3') {
+        else if (input >= '1' && input <= '4') {
             // Characters are stored as numbers, so '1' - '1' = 0,
             // '2' - '1' = 1, and so on. This turns the key into 0-3.
             selected = input - '1';
@@ -225,6 +225,9 @@ int main() {
                 case 2:
                     cout << "      Goodbye. See you again!\n";
                     running = false;    // This ends the while loop.
+                    break;
+                case 3:
+                    cout << "      Credits\n";
                     break;
             }
         }
