@@ -2,9 +2,13 @@
 // <iostream> lets us print text (cout) and read keyboard input (cin).
 // <string> lets us use the "string" type to store words.
 // <conio.h> (Windows only) gives us _getch(), which reads a key instantly, without waiting for the player to press ENTER.
+// <cstdlib> provides a collection of general-purpose functions
+// <cctype> provides character classification and conversion functions
 #include <iostream>
 #include <string>
 #include <conio.h>
+#include <cstdlib>
+#include <cctype> 
 
 using namespace std;
 
