@@ -80,18 +80,74 @@ void showInstructions() {
     _getch();   // Wait for any key (no ENTER needed).
 }
 
+
+void showCredits() {
+
+    // CENTERING SETTINGS (same idea as drawMenu)
+    int consoleWidth  = 100;   // How many characters wide your console is.
+    int consoleHeight = 30;    // How many lines tall your console is.
+    int frameWidth    = 48;    // How wide our frame is (count of characters).
+    int contentHeight = 13;    // How many lines this screen takes up.
+                               // Add 1 for every cout line you add!
+
+    // Horizontal centering: split the leftover space in half.
+    int leftPad = (consoleWidth - frameWidth) / 2;
+    string pad(leftPad, ' ');   // A string made of "leftPad" spaces.
+
+    // Vertical centering: split the leftover lines in half.
+    int topPad = (consoleHeight - contentHeight) / 2;
+    int bottomPad = consoleHeight - contentHeight - topPad - 1;   // -1 keeps us inside the window.
+
+    clearScreen();
+
+    // Empty lines above, to push the screen to the middle.
+    for (int i = 0; i < topPad; i++) {
+        cout << "\n";
+    }
+
+    cout << pad << "+======================================================================+\n";
+    cout << pad << "|                             Credits                                  |\n";
+    cout << pad << "+----------------------------------------------------------------------+\n";
+    cout << "\n";
+
+    // PASTE / EDIT YOUR INSTRUCTION LINES HERE
+    cout << pad << "   			Santos\n";
+    cout << pad << "   			CpE11S1\n";
+    cout << pad << "   			Leader and Programmer\n\n";
+    cout << pad << "   			Sales\n";
+    cout << pad << "   			CpE11S1\n";
+    cout << pad << "   			Programmer\n\n";
+    cout << pad << "   			Fabela\n";
+    cout << pad << "   			CpE11S1\n";
+    cout << pad << "   			Programmer and concept\n\n";
+    cout << pad << "   			Nucum\n";
+    cout << pad << "   			CpE11S1\n";
+    cout << pad << "   			Story and Concept\n\n";
+    cout << "\n";
+    cout << pad << "+-----------------------------------------------------------------------+\n";
+    cout << pad << "|                      PRESS ANY KEY TO CONTINUE                        |\n";
+    cout << pad << "+-----------------------------------------------------------------------+\n";
+
+    // Empty lines below, so the screen stays in the middle.
+    for (int i = 0; i < bottomPad; i++) {
+        cout << "\n";
+    }
+
+    _getch();   // Wait for any key (no ENTER needed).
+}
+
 //  A function that draws the whole menu.
 // "selected" tells us which option is currently highlighted (0 to 3).
 void drawMenu(int selected) {
 
     // An array holding the names of our menu options.
-    string options[3] = { "INSTRUCTION", "START GAME", "QUIT" };
+    string options[4] = { "INSTRUCTION", "START GAME", "QUIT", "CREDITS" };
     
     // CENTERING SETTINGS
     int consoleWidth  = 100;   // How many characters wide your console is.
     int consoleHeight = 30;    // How many lines tall your console is.
     int frameWidth    = 48;    // How wide our menu frame is (count of characters).
-    int menuHeight    = 16;    // How many lines our menu takes up.
+    int menuHeight    = 21;    // How many lines our menu takes up.
 
     // Horizontal centering: split the leftover space in half.
     int leftPad = (consoleWidth - frameWidth) / 2;
@@ -137,7 +193,7 @@ void drawMenu(int selected) {
     
     // Loop through every option and print it.
     // "i" counts 0, 1, 2, 3 - one number per option.
-    for (int i = 0; i < 3; i++) {
+    for (int i = 0; i < 4; i++) {
 
         // Each option is pushed further to the right than the one above it.
         // This creates the slanted "staircase" look.
@@ -764,16 +820,16 @@ int main() {
         if (input == 'w' || input == 'W') {
             selected--;                 // Move up one option.
             if (selected < 0) {
-                selected = 2;           // Wrap around to the bottom.
+                selected = 3;           // Wrap around to the bottom.
             }
         }
         else if (input == 's' || input == 'S') {
             selected++;                 // Move down one option.
-            if (selected > 2) {
+            if (selected > 3) {
                 selected = 0;           // Wrap around to the top.
             }
         }
-        else if (input >= '1' && input <= '3') {
+        else if (input >= '1' && input <= '4') {
             // Characters are stored as numbers, so '1' - '1' = 0,
             // '2' - '1' = 1, and so on. This turns the key into 0-3.
             selected = input - '1';
@@ -798,6 +854,9 @@ int main() {
                 case 2:
                     cout << "      Goodbye. See you again!\n";
                     running = false;    // This ends the while loop.
+                    break;
+                case 3:
+                    showCredits();
                     break;
             }
         }
