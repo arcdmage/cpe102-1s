@@ -9,13 +9,8 @@
 using namespace std;
 
 // A function that "clears" the screen.
-// Instead of using system("cls") (which only works on some computers),
-// we simply print many blank lines to push the old menu out of view.
-void clearScreen() {
-    for (int i = 0; i < 30; i++) {
-        cout << "\n";
-    }
-}
+  int readKey() { cout.flush(); return _getch(); }
+  void clearScreen() { system("cls"); }
 
 // A function that shows the instruction screen.
 // It waits for ANY key press, then returns to whoever called it.
