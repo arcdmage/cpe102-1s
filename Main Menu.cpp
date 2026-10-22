@@ -108,17 +108,32 @@ void drawMenu(int selected) {
     }
     
     // The top border and title.
-    cout << pad << "////////// CRIME SCENE - DO NOT CROSS //////////\n";
-    cout << pad << "+==============================================+\n";
-    cout << pad << "| CASE FILE No. 00XX          [ CONFIDENTIAL ] |\n";
-    cout << pad << "+----------------------------------------------+\n";
-    cout << pad << "|                                              |\n";
-    cout << pad << "|               THE MOONLIT HEIST              |\n";
-    cout << pad << "|                                              |\n";
-    cout << pad << "+----------------------------------------------+\n";
-    cout << pad << "|        Santos - Sales - Fabela - Nucum       |\n";
-    cout << pad << "+==============================================+\n";
+    cout << pad << " _____ _            __  __                 _ _ _\n";
+    cout << pad << "|_   _| |__   ___  |  \\/  | ___   ___  _ __| (_) |_\n";
+    cout << pad << "  | | | '_ \\ / _ \\ | |\\/| |/ _ \\ / _ \\| '_ \\ | | __|\n";
+    cout << pad << "  | | | | | |  __/ | |  | | (_) | (_) | | | | | | |_\n";
+    cout << pad << "  |_| |_| |_|\\___| |_|  |_|\\___/ \\___/|_| |_|_|_|\\__|\n";
+    cout << pad << "           H E I S T   -   a detective game\n\n";
+    cout << pad << "                   /\\/\\/\\/\\/\\/\\/\\\n";
+    cout << pad << "                   | [  ]  [  ] |\n";
+    cout << pad << "                   |____[__]____|\n\n";
+    cout << pad << "  |        Santos - Sales - Fabela - Nucum       |\n";
+    cout << pad << "  +==============================================+\n";
     cout << "\n";
+
+    
+	
+    //cout << pad << "////////// CRIME SCENE - DO NOT CROSS //////////\n";
+    //cout << pad << "+==============================================+\n";
+    //cout << pad << "| CASE FILE No. 00XX          [ CONFIDENTIAL ] |\n";
+    //cout << pad << "+----------------------------------------------+\n";
+    //cout << pad << "|                                              |\n";
+    //cout << pad << "|               THE MOONLIT HEIST              |\n";
+    //cout << pad << "|                                              |\n";
+    //cout << pad << "+----------------------------------------------+\n";
+    //cout << pad << "|        Santos - Sales - Fabela - Nucum       |\n";
+    //cout << pad << "+==============================================+\n";
+    //cout << "\n";
 
     
     // Loop through every option and print it.
