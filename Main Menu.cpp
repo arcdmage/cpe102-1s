@@ -43,23 +43,35 @@ void showInstructions() {
         cout << "\n";
     }
 
-    cout << pad << "+==============================================+\n";
-    cout << pad << "|                 INSTRUCTIONS                 |\n";
-    cout << pad << "+----------------------------------------------+\n";
+    cout << pad << "+======================================================================+\n";
+    cout << pad << "|                           INSTRUCTIONS                               |\n";
+    cout << pad << "+----------------------------------------------------------------------+\n";
     cout << "\n";
 
     // PASTE / EDIT YOUR INSTRUCTION LINES HERE
-    cout << pad << "   1. Replace this with your first instruction.\n";
-    cout << pad << "   2. Replace this with your second instruction.\n";
-    cout << pad << "   3. Replace this with your third instruction.\n";
-    cout << pad << "   4. Replace this with your fourth instruction.\n";
-    cout << pad << "   5. Replace this with your fifth instruction.\n";
+    cout << pad << "   1. Find out who stole the Moonlit Pearl Earrings by reading the case\n";
+    cout << pad << "   2. file and questioning the four suspects.\n\n";
+    cout << pad << "                             Controls\n";
+    cout << pad << "   WASD  Move your detective (@)\n";
+    cout << pad << "   E Talk to a suspect/examine the dresser ($) when next to it\n";
+    cout << pad << "   C Open the Case File\n";
+    cout << pad << "   N  Open Investigation Notes\n";
+    cout << pad << "   X  Make your final Deduction\n"; 
+	cout << pad << "   (available any time)\n";
+    cout << pad << "   Q  Return to the main menu\n\n";   
+    cout << pad << "                          QUESTIONING\n";
+    cout << pad << "   1. Pick the best response to each statement (number keys).\n";
+    cout << pad << "   2. correct = +50 points.  Wrong = -20 points, but you can try again.\n\n";
+    cout << pad << "                           DEDUCTION\n";
+    cout << pad << "   1. Choose the suspect, reasoning, motive and evidence. ALL FOUR must be\n";
+    cout << pad << "   2. right to win (up to 1000 points). Any mistake = GAME OVER.\n";
+    cout << pad << "   3. Interview everyone with few mistakes to earn an efficiency bonus!\n";
     // Kakapagod mag type tigil ko na dito XD dagdagan nyu nalang pag kaylangan
 
     cout << "\n";
-    cout << pad << "+----------------------------------------------+\n";
-    cout << pad << "|          PRESS ANY KEY TO CONTINUE           |\n";
-    cout << pad << "+==============================================+\n";
+    cout << pad << "+-----------------------------------------------------------------------+\n";
+    cout << pad << "|                      PRESS ANY KEY TO CONTINUE                        |\n";
+    cout << pad << "+-----------------------------------------------------------------------+\n";
 
     // Empty lines below, so the screen stays in the middle.
     for (int i = 0; i < bottomPad; i++) {
@@ -74,7 +86,7 @@ void showInstructions() {
 void drawMenu(int selected) {
 
     // An array holding the names of our menu options.
-    string options[3] = { "START GAME", "INSTRUCTION", "QUIT" };
+    string options[3] = { "INSTRUCTION", "START GAME", "QUIT" };
     
     // CENTERING SETTINGS
     int consoleWidth  = 100;   // How many characters wide your console is.
@@ -195,11 +207,11 @@ int main() {
             // depending on the value of "selected".
             switch (selected) {
                 case 0:
-                    cout << "      Starting Game...\n";
-                    break;      // "break" stops us from falling into the next case.
-                case 1:
                     showInstructions();
                     break;
+                case 1:
+                    cout << "      Starting Game...\n";
+                    break;      // "break" stops us from falling into the next case.
                 case 2:
                     cout << "      Goodbye. See you again!\n";
                     running = false;    // This ends the while loop.
