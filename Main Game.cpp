@@ -441,8 +441,37 @@ bool nearDresser(int px, int py) {
 }
 
 // Draws the map in real time with the player and suspects on top
+// Draws the map side-by-side with the UI panel on the right
 void drawScreen(int px, int py, const string& msg) {
     clearScreen();
+    
+    // UI lines to display on the right side of the map
+    string uiLines[MAP_H];
+    for(int i = 0; i < MAP_H; i++) uiLines[i] = "";
+
+    // Populate UI lines based on the current game state
+    uiLines[0] = " Location: " + getRoomName(px, py);
+    uiLines[1] = " Evidence: " + to_string(countEvidence()) + "/" + to_string(NUM_EVIDENCE) + "   Score: " + to_string(investigationScore());
+    uiLines[2] = "";
+    uiLines[3] = " LEGEND:";
+    uiLines[4] = " @ You";
+    uiLines[5] = " D Damian";
+    uiLines[6] = " E Edmund";
+    uiLines[7] = " R Rosa";
+    uiLines[8] = " L Lily";
+    uiLines[9] = " $ Dresser";
+    uiLines[10] = "";
+    uiLines[11] = " CONTROLS:";
+    uiLines[12] = " [WASD] Move";
+    uiLines[13] = " [E]    Interact";
+    uiLines[14] = " [C]    Case File";
+    uiLines[15] = " [N]    Notes";
+    uiLines[16] = " [X]    Deduction";
+    uiLines[17] = " [Q]    Menu";
+    uiLines[18] = "";
+    uiLines[19] = " STATUS:";
+    uiLines[20] = " " + msg;
+
     for (int r = 0; r < MAP_H; r++) {
         string line = "";
         for (int c = 0; c < MAP_W; c++) {
@@ -452,16 +481,10 @@ void drawScreen(int px, int py, const string& msg) {
             if (r == py && c == px) ch = '@';
             line += ch;
         }
-        cout << line << "\n";
+        // Print the map row followed by a separator and the corresponding UI line
+        cout << line << "   |   " << uiLines[r] << "\n";
     }
-    cout << " Location: " << getRoomName(px, py)
-         << "   Evidence: " << countEvidence() << "/" << NUM_EVIDENCE
-         << "   Score: " << investigationScore() << "\n";
-    cout << " @ You  D Damian  E Edmund  R Rosa  L Lily  $ Dresser\n";
-    cout << " [WASD] Move  [E] Interact  [C] Case File  [N] Notes  [X] Deduction  [Q] Menu\n";
-    cout << " > " << msg << "\n";
 }
-
 // ============================================================
 //  Case file, notes, crime scene
 // ============================================================
