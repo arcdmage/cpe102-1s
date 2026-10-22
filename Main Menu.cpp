@@ -76,6 +76,63 @@ void showInstructions() {
     _getch();   // Wait for any key (no ENTER needed).
 }
 
+void showCredits() {
+
+    // CENTERING SETTINGS (same idea as drawMenu)
+    int consoleWidth  = 100;   // How many characters wide your console is.
+    int consoleHeight = 30;    // How many lines tall your console is.
+    int frameWidth    = 48;    // How wide our frame is (count of characters).
+    int contentHeight = 13;    // How many lines this screen takes up.
+                               // Add 1 for every cout line you add!
+
+    // Horizontal centering: split the leftover space in half.
+    int leftPad = (consoleWidth - frameWidth) / 2;
+    string pad(leftPad, ' ');   // A string made of "leftPad" spaces.
+
+    // Vertical centering: split the leftover lines in half.
+    int topPad = (consoleHeight - contentHeight) / 2;
+    int bottomPad = consoleHeight - contentHeight - topPad - 1;   // -1 keeps us inside the window.
+
+    clearScreen();
+
+    // Empty lines above, to push the screen to the middle.
+    for (int i = 0; i < topPad; i++) {
+        cout << "\n";
+    }
+
+    cout << pad << "+======================================================================+\n";
+    cout << pad << "|                             Credits                                  |\n";
+    cout << pad << "+----------------------------------------------------------------------+\n";
+    cout << "\n";
+
+    // PASTE / EDIT YOUR INSTRUCTION LINES HERE
+    cout << pad << "   			Santos\n";
+    cout << pad << "   			CpE11S1\n";
+    cout << pad << "   			Leader and Programmer\n\n";
+    cout << pad << "   			Sales\n";
+    cout << pad << "   			CpE11S1\n";
+    cout << pad << "   			Programmer\n\n";
+    cout << pad << "   			Fabela\n";
+    cout << pad << "   			CpE11S1\n";
+    cout << pad << "   			Programmer and concept\n\n";
+    cout << pad << "   			Nucum\n";
+    cout << pad << "   			CpE11S1\n";
+    cout << pad << "   			Story and Concept\n\n";
+    cout << "\n";
+    cout << pad << "+-----------------------------------------------------------------------+\n";
+    cout << pad << "|                      PRESS ANY KEY TO CONTINUE                        |\n";
+    cout << pad << "+-----------------------------------------------------------------------+\n";
+
+    // Empty lines below, so the screen stays in the middle.
+    for (int i = 0; i < bottomPad; i++) {
+        cout << "\n";
+    }
+
+    _getch();   // Wait for any key (no ENTER needed).
+}
+
+
+
 //  A function that draws the whole menu.
 // "selected" tells us which option is currently highlighted (0 to 3).
 void drawMenu(int selected) {
@@ -227,7 +284,7 @@ int main() {
                     running = false;    // This ends the while loop.
                     break;
                 case 3:
-                    cout << "      Credits\n";
+                    showCredits();
                     break;
             }
         }
