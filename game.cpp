@@ -1168,9 +1168,7 @@ void drawScreen(int px, int py, const string& msg) {
     }
 }
 
-// ============================================================
 //  Case file, notes
-// ============================================================
 void showPerson(int i) {
     Suspect& p = suspects[i];
     clearScreen();
