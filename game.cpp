@@ -8,7 +8,8 @@
 #include <string>
 #include <conio.h>
 #include <cstdlib>
-#include <cctype> 
+#include <cctype>
+#include <cstring>
 
 using namespace std;
 
@@ -139,7 +140,7 @@ void drawMenu(int selected) {
 
     // An array holding the names of our menu options.
     string options[4] = { "INSTRUCTION", "START GAME", "QUIT", "CREDITS" };
-    
+
     // CENTERING SETTINGS
     int consoleWidth  = 100;   // How many characters wide your console is.
     int consoleHeight = 30;    // How many lines tall your console is.
@@ -158,7 +159,7 @@ void drawMenu(int selected) {
     for (int i = 0; i < topPad; i++) {
         cout << "\n";
     }
-    
+
     // The top border and title.
     cout << pad << " _____ _            __  __                 _ _ _\n";
     cout << pad << "|_   _| |__   ___  |  \\/  | ___   ___  _ __| (_) |_\n";
@@ -173,8 +174,8 @@ void drawMenu(int selected) {
     cout << pad << "  +==============================================+\n";
     cout << "\n";
 
-    
-	
+
+
     //cout << pad << "////////// CRIME SCENE - DO NOT CROSS //////////\n";
     //cout << pad << "+==============================================+\n";
     //cout << pad << "| CASE FILE No. 00XX          [ CONFIDENTIAL ] |\n";
@@ -187,7 +188,7 @@ void drawMenu(int selected) {
     //cout << pad << "+==============================================+\n";
     //cout << "\n";
 
-    
+
     // Loop through every option and print it.
     // "i" counts 0, 1, 2, 3 - one number per option.
     for (int i = 0; i < 4; i++) {
@@ -209,7 +210,7 @@ void drawMenu(int selected) {
             cout << pad;
             for (int s = 0; s < indent; s++) cout << " ";
             cout << "//>>  " << (i + 1) << ". " << options[i] << "  <<\n";
-            cout << pad; 
+            cout << pad;
             for (int s = 0; s < indent; s++) cout << " ";
             cout << "/////////////////////////\n";
         } else {
@@ -224,7 +225,7 @@ void drawMenu(int selected) {
     }
 }
 
-// Constants 
+// Constants
 const int MAP_W = 60;
 const int MAP_H = 21;
 const int NUM_SUSPECTS = 5;
@@ -1179,6 +1180,20 @@ void showPerson(int i) {
     waitKey();
 }
 
+void showCaseOverview() {
+    clearScreen();
+    printHeader("CASE OVERVIEW AND CRIME SCENE");
+    cout << "\n CASE OVERVIEW\n";
+    printWrapped("On the morning of September 19, a high-value internal theft occurred at the estate. The Moonlit Pearl Earrings, a priceless heirloom gifted to Grace Ivory by her grandmother, were reported missing from her private dressing room.", 2, 2, TEXT_WIDTH);
+    cout << "\n CRIME SCENE\n";
+    printWrapped("Location: Walk-in Closet, Second Floor", 2, 2, TEXT_WIDTH);
+    printWrapped("* No signs of forced entry were found on the doors of the Master Bedroom or Walk-in Closet.", 2, 4, TEXT_WIDTH);
+    printWrapped("* The safe was found closed and locked, with no visible scratches, tampering, or damage around the keyhole.", 2, 4, TEXT_WIDTH);
+    printWrapped("* The room appeared clean and orderly, with no obvious signs of disturbance.", 2, 4, TEXT_WIDTH);
+    printWrapped("* A faint smell of sanitizer lingered in the Walk-in Closet.", 2, 4, TEXT_WIDTH);
+    waitKey();
+}
+
 void showCaseFile() {
     while (true) {
         clearScreen();
@@ -1195,18 +1210,13 @@ void showCaseFile() {
         int c = askChoice(4, true);
         if (c == 0) return;
 
-        clearScreen();
         if (c == 1) {
-            printHeader("CASE OVERVIEW AND CRIME SCENE");
-            cout << "\n CASE OVERVIEW\n";
-            printWrapped("On the morning of September 19, a high-value internal theft occurred at the estate. The Moonlit Pearl Earrings, a priceless heirloom gifted to Grace Ivory by her grandmother, were reported missing from her private dressing room.", 2, 2, TEXT_WIDTH);
-            cout << "\n CRIME SCENE\n";
-            printWrapped("Location: Walk-in Closet, Second Floor", 2, 2, TEXT_WIDTH);
-            printWrapped("* No signs of forced entry were found on the doors of the Master Bedroom or Walk-in Closet.", 2, 4, TEXT_WIDTH);
-            printWrapped("* The safe was found closed and locked, with no visible scratches, tampering, or damage around the keyhole.", 2, 4, TEXT_WIDTH);
-            printWrapped("* The room appeared clean and orderly, with no obvious signs of disturbance.", 2, 4, TEXT_WIDTH);
-            printWrapped("* A faint smell of sanitizer lingered in the Walk-in Closet.", 2, 4, TEXT_WIDTH);
-        } else if (c == 2) {
+            showCaseOverview();
+            continue;
+        }
+
+        clearScreen();
+        if (c == 2) {
             printHeader("TIMELINE OF EVENTS");
             cout << "\n";
             printWrapped("09:00 PM: The Owner verifies that the Moonlit Pearl Earrings are secured inside the floor safe within the Walk-in Closet.", 2, 12, TEXT_WIDTH);
@@ -1550,12 +1560,13 @@ int exploreLoop() {
 void playGame() {
     while (true) {
         resetGame();
+        showCaseOverview();
         int result = exploreLoop();
-        if (result == 0) return;            // back to main menu
+        if (result == 0) return;     // back to main menu
 
         cout << "\n  [1] Play Again   [2] Main Menu\n\n  Your choice: ";
         int c = askChoice(2, false);
-        if (c == 2) return;                 // else loop restarts the game
+        if (c == 2) return;          // else loop restarts the game
     }
 }
 
@@ -1568,7 +1579,7 @@ int main() {
     char input;            // Stores the key the player types.
 
     showInstructions();    // Show the instructions first, then go to the menu.
-    
+
     // The main loop. It redraws the menu again and again
     // until the player chooses QUIT (which sets running to false).
     while (running) {
@@ -1625,6 +1636,6 @@ int main() {
             }
         }
     }
-    
+
     return 0;
 }
