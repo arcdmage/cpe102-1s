@@ -12,7 +12,6 @@
 #include <iostream>
 #include <string>
 
-
 using namespace std;
 
 // A function that "clears" the screen.
@@ -322,7 +321,6 @@ const char *gameMap[MAP_H] = {
     "############################################################",
 };
 
-// ---------- Data structures ----------
 // One possible question the detective can ask.
 struct Choice {
   string label;    // the question shown on screen
@@ -633,7 +631,7 @@ void setupJulian() {
           "There's not much to tell. I was following the markets and speaking "
           "with business contacts. I had work to finish, and I stayed occupied "
           "with it.\n" DET "Can anyone verify that you remained in the Living "
-                           "Room throughout the evening?",
+          "Room throughout the evening?",
       0, -1, -1,
       DET
       "You claimed to have spent the evening working in the Living Room and "
@@ -652,7 +650,7 @@ void setupJulian() {
           "Your work may establish what you were doing, but it doesn't "
           "necessarily establish where you were every minute of the "
           "evening.\n" JUL "If you insist. But I won't have my business "
-                           "affairs treated as evidence of a crime.",
+          "affairs treated as evidence of a crime.",
           "Julian claims to have made private overseas calls, but his alibi "
           "has not yet been independently verified."},
       Choice{"Ask what he was working on.",
@@ -1086,7 +1084,7 @@ void setupEvelyn() {
           "had no reason to give her anything else.\n" DET
           "I'll have to compare your account with the condition of the teacup "
           "and the other evidence.\n" EVE "That's understandable. I prepared "
-                                          "the tea as part of my usual duties.",
+          "the tea as part of my usual duties.",
           "Evelyn confirms delivering chamomile tea to Grace at approximately "
           "10:00 PM. She does not recall seeing Grace finish it and says Grace "
           "appeared tired."},
@@ -1183,7 +1181,7 @@ void setupEvelyn() {
           "What were you checking?\n" EVE
           "Just a personal matter. It had nothing to do with Miss Grace or her "
           "earrings.\n" DET "Why didn't you mention this when you first "
-                            "described your evening?\n" EVE
+          "described your evening?\n" EVE
           "I didn't think checking my phone briefly was relevant. I wasn't "
           "trying to hide anything about the theft.\n" DET
           "Can you tell me what you were looking at?\n" EVE
@@ -1342,7 +1340,7 @@ void setupGideon() {
           "I understand what you're asking, but I don't have access to that "
           "key. I'm responsible for the grounds, not the household's "
           "valuables.\n" DET "I'll compare your statement with the key "
-                             "registry and the other evidence.\n" GID
+          "registry and the other evidence.\n" GID
           "That's all I can tell you, Detective. I had no reason to go inside.",
           "Gideon denies entering the second-floor Study Room that evening and "
           "says he had no work-related reason to go there. He also denies "
@@ -2356,40 +2354,34 @@ int main() {
     // 'W' and 'S' move the highlight. We accept both
     // lowercase and uppercase letters.
     if (input == 'w' || input == 'W') {
-      selected--; // Move up one option.
+      selected--;
       if (selected < 0) {
-        selected = 3; // Wrap around to the bottom.
+        selected = 3;
       }
     } else if (input == 's' || input == 'S') {
-      selected++; // Move down one option.
+      selected++;
       if (selected > 3) {
-        selected = 0; // Wrap around to the top.
+        selected = 0;
       }
     } else if (input >= '1' && input <= '4') {
-      // Characters are stored as numbers, so '1' - '1' = 0,
-      // '2' - '1' = 1, and so on. This turns the key into 0-3.
       selected = input - '1';
-      input = 'e'; // Pretend they also pressed E.
+      input = 'e';
     }
-
-    // I replaced it so you just need to press ENTER (NEAT RIGHT@!)
     if (input == 'e' || input == 'E' || input == '\r') {
 
       clearScreen();
       cout << "\n  ============================================\n\n";
 
-      // A switch statement picks ONE block of code to run,
-      // depending on the value of "selected".
       switch (selected) {
       case 0:
         showInstructions();
-        break; // "break" stops us from falling into the next case.
+        break;
       case 1:
         playGame();
         break;
       case 2:
         cout << "      Goodbye. See you again!\n";
-        running = false; // This ends the while loop.
+        running = false;
         break;
       case 3:
         showCredits();
