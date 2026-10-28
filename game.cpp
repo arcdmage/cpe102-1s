@@ -481,9 +481,7 @@ int efficiencyBonus() {            // up to +100, only if everyone was interview
     return b;
 }
 
-// ============================================================
 //  Game setup - topics are built with this helper
-// ============================================================
 Topic makeTopic(const string& label, const string& intro, int correct, int evidence,
                 int needEvidence, const string& review,
                 const Choice& a, const Choice& b, const Choice& c) {
