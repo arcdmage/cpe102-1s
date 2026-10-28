@@ -145,8 +145,6 @@ void showCredits() {
        << "+-------------------------------------------------------------------"
           "---+\n";
   cout << "\n";
-
-  // PASTE / EDIT YOUR INSTRUCTION LINES HERE
   cout << pad << "   			Santos\n";
   cout << pad << "   			CpE11S1\n";
   cout << pad << "   			Leader and Programmer\n\n";
