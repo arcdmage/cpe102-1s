@@ -1,0 +1,45 @@
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 45}}}%%
+flowchart LR
+    classDef step fill:#e0e7ff,stroke:#6366f1,color:#312e81
+    classDef good fill:#ccfbf1,stroke:#0d9488,color:#134e4a
+    classDef bad fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    classDef sub fill:#fef3c7,stroke:#d97706,color:#78350f
+
+    subgraph LEGEND["Legend"]
+        direction LR
+        L1["Normal step"]:::step
+        L2["Correct answer"]:::good
+        L3["Wrong answer"]:::bad
+        L5["Evidence unlock rule"]:::sub
+    end
+
+    START(["interview(s) starts<br/>Julian 4 topics, Arthur 3,<br/>Evelyn 3, Gideon 3, Clara 3"]):::step --> ST{"state == 0?<br/>Not yet interviewed"}:::step
+    ST -- "Yes" --> OP["Show opening dialogue<br/>state = 1<br/>(Currently interviewing)"]:::step
+    ST -- "No" --> MENU
+    OP --> MENU["Show topic menu<br/>only topics whose required<br/>evidence is found<br/>finished topics labeled Review"]:::step
+
+    MENU --> CH{"askChoice()"}:::step
+    CH -- "0 End conversation" --> FW["Show farewell dialogue"]:::step
+    FW --> END(["Back to exploreLoop()"]):::step
+    CH -- "Pick a topic" --> RT["runTopic(s, t)"]:::step
+    RT --> DN{"Topic already done?"}:::step
+    DN -- "Yes" --> REV["Show review text<br/>no points"]:::step
+    REV --> CHK
+    DN -- "No" --> SHOW["Show topic intro<br/>3 response choices<br/>and 0 Back"]:::step
+    SHOW --> PK{"Player picks"}:::step
+    PK -- "0 Back" --> CHK
+    PK -- "Wrong choice" --> BAD["wrongCount++ (-20 points)<br/>show reply and feedback<br/>Try again"]:::bad
+    BAD --> SHOW
+    PK -- "Correct choice" --> OK["correctCount++ (+50 points)<br/>add note<br/>reveal topic evidence if any<br/>mark topic done"]:::good
+    OK --> CHK
+
+    CHK{"state is not 2 AND<br/>all topics done?"}:::step
+    CHK -- "Yes" --> CMP["state = 2<br/>(Previously interviewed)<br/>show closing dialogue"]:::step
+    CHK -- "No" --> MENU
+    CMP --> MENU
+
+    U1["Arthur: evening and noise topic<br/>correct answer reveals<br/>Gold Cufflink"]:::sub
+    U2["Cufflink unlocks two topics:<br/>Julian's cufflink topic and<br/>Arthur's relationship topic"]:::sub
+    OK -. "Arthur topic 1 only" .-> U1
+    U1 --> U2
+    U2 -. "topics appear in menu" .-> MENU

@@ -1,0 +1,45 @@
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 45}}}%%
+flowchart LR
+    classDef step fill:#e0e7ff,stroke:#6366f1,color:#312e81
+    classDef good fill:#ccfbf1,stroke:#0d9488,color:#134e4a
+    classDef bad fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    classDef sub fill:#fef3c7,stroke:#d97706,color:#78350f
+
+    subgraph LEGEND["Legend"]
+        direction LR
+        L1["Normal step"]:::step
+        L2["Success"]:::good
+        L3["Wrong answer or Game Over"]:::bad
+    end
+
+    START(["deduction() called<br/>(X key)"]):::step --> S1["Choose suspect<br/>5 suspects, or 0 Not ready"]:::step
+    S1 --> A1{"Choice"}:::step
+    A1 -- "0" --> BACK(["return false<br/>back to investigation"]):::step
+    A1 -- "1 to 5" --> S2["Choose reasoning<br/>(5 options)"]:::step
+    S2 --> S3["Choose motive<br/>(5 options)"]:::step
+    S3 --> S4["Choose supporting evidence<br/>(5 options)"]:::step
+    S4 --> CK["Compare with answer key<br/>okS, okR, okM, okE"]:::step
+    CK --> DS["deductionScore =<br/>200 if suspect right<br/>+ 100 if reasoning right<br/>+ 100 if motive right<br/>+ 100 if evidence right"]:::step
+    DS --> ALL{"All four correct?"}:::step
+
+    ALL -- "Yes" --> INVS["investigationScore()<br/>= correct x 50 - wrong x 20<br/>kept between 0 and 400"]:::good
+    INVS --> BON["efficiencyBonus()<br/>if all 5 suspects interviewed:<br/>100 - wrong x 10 (minimum 0)<br/>otherwise 0"]:::good
+    BON --> TOT["total = investigation<br/>+ bonus + deduction<br/>(maximum 1000)"]:::good
+    TOT --> RANK{"Rank by total"}:::good
+    RANK -- "900 or more" --> R1["Master Detective"]:::good
+    RANK -- "700 to 899" --> R2["Senior Detective"]:::good
+    RANK -- "500 to 699" --> R3["Rookie Detective"]:::good
+    RANK -- "Below 500" --> R4["Trainee Detective"]:::good
+    R1 --> WIN(["CASE SOLVED<br/>show score breakdown and rank"]):::good
+    R2 --> WIN
+    R3 --> WIN
+    R4 --> WIN
+
+    ALL -- "No" --> GO["GAME OVER header<br/>print a line for each wrong part:<br/>wrong suspect, reasoning,<br/>motive or evidence"]:::bad
+    GO --> MULT{"More than one wrong?"}:::bad
+    MULT -- "Yes" --> CMB["Print: the failures combine"]:::bad
+    MULT -- "No" --> FS0
+    CMB --> FS0["Final Score: 0 (Game Over)"]:::bad
+
+    WIN --> NEXT(["return true<br/>playGame(): 1 Play Again<br/>or 2 Main Menu"]):::step
+    FS0 --> NEXT

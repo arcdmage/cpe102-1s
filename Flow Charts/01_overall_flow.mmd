@@ -1,0 +1,46 @@
+%%{init: {"flowchart": {"nodeSpacing": 30, "rankSpacing": 45}}}%%
+flowchart LR
+    classDef step fill:#e0e7ff,stroke:#6366f1,color:#312e81
+    classDef good fill:#ccfbf1,stroke:#0d9488,color:#134e4a
+    classDef bad fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    classDef sub fill:#fef3c7,stroke:#d97706,color:#78350f
+
+    subgraph LEGEND["Legend"]
+        direction LR
+        L1["Normal step"]:::step
+        L2["Success"]:::good
+        L3["Game Over"]:::bad
+        L4["Detailed in another chart"]:::sub
+    end
+
+    START([main starts]):::step --> SC["setupConsole()"]:::step
+    SC --> SI["showInstructions()<br/>press any key"]:::step
+    SI --> MENU["clearScreen()<br/>drawMenu(selected)"]:::step
+    MENU --> RK["readMenuKey()<br/>W, S, arrows, mouse wheel,<br/>1 to 4, E or Enter"]:::step
+    RK --> PICK{"Which key?"}:::step
+    PICK -- "W or Up" --> UP["selected-- (wraps 0 to 3)"]:::step
+    UP --> MENU
+    PICK -- "S or Down" --> DN["selected++ (wraps 3 to 0)"]:::step
+    DN --> MENU
+    PICK -- "Other key" --> MENU
+    PICK -- "1 to 4" --> NUM["selected = key minus 1<br/>treated as Enter"]:::step
+    NUM --> SW
+    PICK -- "E or Enter" --> SW{"switch selected"}:::step
+
+    SW -- "1 Instruction" --> INS["showInstructions()"]:::step
+    INS --> MENU
+    SW -- "4 Credits" --> CRD["showCredits()"]:::step
+    CRD --> MENU
+    SW -- "3 Quit" --> BYE["Goodbye message<br/>running = false"]:::step
+    BYE --> EXIT([Program ends]):::step
+    SW -- "2 Start game" --> PG["playGame()"]:::step
+
+    PG --> RG["resetGame()<br/>clear notes and scores,<br/>load 4 starting evidence<br/>and 5 suspects"]:::step
+    RG --> CO["showCaseOverview()"]:::step
+    CO --> EL[["exploreLoop()<br/>move, search, interview<br/>see Chart 2"]]:::sub
+    EL -- "Q (returns 0)" --> MENU
+    EL -- "X" --> DED[["deduction()<br/>see Chart 4"]]:::sub
+    DED -- "0 Not ready (false)" --> EL
+    DED -- "Case ends (true)" --> AGAIN{"Play Again<br/>or Main Menu?"}:::step
+    AGAIN -- "1 Play Again" --> RG
+    AGAIN -- "2 Main Menu" --> MENU
