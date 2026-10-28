@@ -65,7 +65,7 @@ using namespace std;
 #define C_SEL      "\033[1;30;102m"
 
 // Width in characters of each map cell
-const int CELL_W = 2;
+const int CELL_W = 1;
 
 // Foreground colors for each suspect
 const char* SUSPECT_COLOR[5] = { C_BRED, C_BBLUE, C_BMAGENTA, C_BGREEN, C_BYELLOW };
