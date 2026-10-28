@@ -152,10 +152,10 @@ void showCredits() {
   cout << pad << "   			Leader and Programmer\n\n";
   cout << pad << "   			Sales\n";
   cout << pad << "   			CpE11S1\n";
-  cout << pad << "   			Programmer\n\n";
+  cout << pad << "   			Design & Programmer\n\n";
   cout << pad << "   			Fabela\n";
   cout << pad << "   			CpE11S1\n";
-  cout << pad << "   			Programmer and concept\n\n";
+  cout << pad << "   			Programmer & Concept\n\n";
   cout << pad << "   			Nucum\n";
   cout << pad << "   			CpE11S1\n";
   cout << pad << "   			Story and Concept\n\n";
