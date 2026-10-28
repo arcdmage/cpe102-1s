@@ -1686,8 +1686,6 @@ int main() {
     bool running  = true;
     char input;
 
-    showInstructions();
-
     while (running) {
         clearScreen();
         drawMenu(selected);
