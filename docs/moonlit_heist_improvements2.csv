@@ -1,0 +1,62 @@
+ID,Category,Item,Why / where in game.cpp,Impact,Effort,Phase,Status,Owner,Notes,Value score
+1,Navigation and flow,Back navigation in deduction,"deduction() is a fixed 4-step chain. Steps 2 to 4 use askChoice(5, false), so there is no 0 option.",High,S,Phase 1,To do,,,3.0
+2,Navigation and flow,Confirmation screen before submitting,Show the 4 choices with Confirm / Change an answer. One wrong pick currently ends the game.,High,S,Phase 1,To do,,,3.0
+3,Navigation and flow,Dialogue log (L key),waitKey() moves on and the reply is gone. Store the last N lines in an array like notes.,High,M,Phase 2,To do,,,1.5
+4,Navigation and flow,C and N hotkeys inside interviews and deduction,Case File and Notes only work in exploreLoop(). The player can't check the evidence log while choosing evidence.,High,M,Phase 1,To do,,,1.5
+5,Navigation and flow,Page back in Notes,showNotes() only goes forward through its pages.,Med,S,Backlog,To do,,,2.0
+6,Navigation and flow,Confirm on Q,Q returns to the menu and wipes all progress with no warning.,Med,S,Phase 2,To do,,,2.0
+7,Navigation and flow,Arrow keys in the exploration map,They work only in the main menu (readMenuKey).,Med,S,Backlog,To do,,,2.0
+8,Navigation and flow,Esc as Back,"Treat Esc as 0 in askChoice. Careful on Mac/Linux, where arrow keys also start with Esc.",Low,S,Backlog,To do,,,1.0
+9,Navigation and flow,Quick profile view during an interview,Let the player open the suspect's file with one key.,Low,S,Backlog,To do,,,1.0
+10,Navigation and flow,Retry deduction after Game Over,playGame() calls resetGame() and wipes everything. Offer retry deduction as an easy mode; keep full restart as default.,Med,M,Backlog,To do,,,1.0
+11,Navigation and flow,Save and load,"Needs <fstream>, which isn't on the allowed library list.",Low,L,Backlog,To do,,,0.3
+12,Gameplay and design,Present Evidence option,"Doc says to question statements to uncover inconsistencies, but interviews only pick the best of 3 questions. Let the player pick evidence to catch a lie.",High,L,Phase 3,To do,,,1.0
+13,Gameplay and design,Interaction prompt,Show '[E] Talk to Julian' or '[E] Examine desk' when adjacent. The player currently has to guess.,High,S,Phase 1,To do,,,3.0
+14,Gameplay and design,Objective line,Show a line like 'Interview all 5 suspects (2/5)'.,Med,S,Phase 2,To do,,,2.0
+15,Gameplay and design,Hint key (H),"The solution is a chain (Arthur, cufflink, desk ink, deduction). A stuck player has no direction, so add a hint that costs points.",Med,M,Backlog,To do,,,1.0
+16,Gameplay and design,Flag-based unlocks,"Unlocks only check evidence (needEvidence). Dev notes say Evelyn's phone topic should unlock after Arthur's testimony, but it is always visible.",Med,M,Phase 3,To do,,,1.0
+17,Gameplay and design,Payoff for red herrings,Handbag catalog and garden soil are found but never used in dialogue. Add topics for Evelyn and Gideon that need them.,Med,M,Phase 3,To do,,,1.0
+18,Gameplay and design,More searchable objects,"Only 4 exist ($ & % ^). The timeline has the teacup, closet-threshold wipe and brass bookend.",Med,M,Phase 3,To do,,,1.0
+19,Gameplay and design,Grace (the owner) as an NPC,She is in the doc but not in the game. She could explain the primary key and give the first hint.,Med,M,Phase 3,To do,,,1.0
+20,Gameplay and design,Shuffle answer order,"tp.correct is fixed, so replays can be memorized.",Med,M,Phase 2,To do,,,1.0
+21,Gameplay and design,Suspects react to evidence,"For example, Julian says something once you have found the ink.",Low,M,Backlog,To do,,,0.5
+22,Gameplay and design,Moving NPCs,"Suspects are static (x, y fixed).",Low,L,Backlog,To do,,,0.3
+23,Gameplay and design,Difficulty modes,Easy gives hints and retry. Hard has no hints.,Low,M,Backlog,To do,,,0.5
+24,Scoring and balance,Scoring cap mismatch,"16 topics x 50 = 800 raw points but the score is capped at 400, so up to 20 wrong answers cost nothing. Use +25 per answer or rescale.",High,S,Phase 1,To do,,,3.0
+25,Scoring and balance,Show the efficiency bonus,It is invisible now. Show 'Bonus: 100 (-10 per mistake)' in the side panel.,Med,S,Phase 2,To do,,,2.0
+26,Scoring and balance,Partial credit for the bonus,The bonus is 0 until all 5 suspects are fully done.,Low,S,Backlog,To do,,,1.0
+27,Scoring and balance,Game Over shows 0,Doc says the score should reflect performance. Decide whether Game Over shows the investigation score.,Low,S,Backlog,To do,,,1.0
+28,Scoring and balance,Guessable deduction,"Game Over names exactly which parts were wrong and correct positions are fixed ([2] reasoning, [4] motive, [3] evidence). Solvable in about 4 tries. Shuffle options and consider an attempt penalty.",High,M,Phase 2,To do,,,1.5
+29,Scoring and balance,Reasoning option 2 spoils the answer,"The correct reasoning text states the full solution (Julian, spare key, desk). Make options shorter and equal in style.",Med,S,Phase 2,To do,,,2.0
+30,Scoring and balance,Deduction allowed from turn one,"Consider requiring some progress, or counting attempts.",Low,S,Backlog,To do,,,1.0
+31,Content and story,Prologue and first-time tutorial hints,The game just drops you at the map.,Med,S,Backlog,To do,,,2.0
+32,Content and story,Unlock Case File timeline entries,The timeline is static. Unlock entries like 10:15 light and 11:15 cufflink as clues are found.,Med,S,Phase 3,To do,,,2.0
+33,Content and story,Undiscovered evidence shown as ???,So players know what they are missing.,Low,S,Backlog,To do,,,1.0
+34,Content and story,"Organize Notes by suspect, highlight contradictions",Notes are a flat list now.,Med,M,Phase 3,To do,,,1.0
+35,Content and story,Epilogue timeline recap,"After a win, recap the true heist timeline (10:15 key, 10:40 theft, 11:15 trap).",Low,S,Backlog,To do,,,1.0
+36,Content and story,Final stats screen,"Show wrong answers, evidence found (x/8) and topics done (x/16).",Low,S,Backlog,To do,,,1.0
+37,Content and story,Update the instructions screen,Mention [0] Back and the dialogue log.,Low,S,Backlog,To do,,,1.0
+38,UI and QoL,"Replace system(""cls"")","It flickers on every step and spawns a process. Print ""\033[H\033[2J"" instead. setupConsole() already enables ANSI on Windows.",Med,S,Phase 1,To do,,,2.0
+39,UI and QoL,Console size check,Layout needs about 100 columns (map 60 + panel + dialogue width 86). Warn or resize.,Med,S,Backlog,To do,,,2.0
+40,UI and QoL,Room labels on the map,The player has to read the side panel to know where they are. Also highlight objects when adjacent.,Med,M,Backlog,To do,,,1.0
+41,UI and QoL,Interview progress display,Show 'Julian 2/4' in the Persons of Interest list and on the map panel.,Med,S,Phase 2,To do,,,2.0
+42,UI and QoL,NEW tag on topics,Mark topics unlocked by evidence. A ! over a suspect on the map would help too.,Med,S,Phase 2,To do,,,2.0
+43,UI and QoL,Fix the Status panel,"Only 3 lines of 31 characters, so longer messages get cut.",Low,S,Backlog,To do,,,1.0
+44,UI and QoL,ASCII fallback,The symbols ? ? ? ? ? need UTF-8.,Low,S,Backlog,To do,,,1.0
+45,UI and QoL,Optional bell sound,Print \a on correct and wrong answers.,Low,S,Backlog,To do,,,1.0
+46,UI and QoL,Typewriter text effect,"Needs a sleep function, which is outside the allowed libraries.",Low,M,Backlog,To do,,,0.5
+47,Code quality,"Split the 1,724-line file","Separate map, UI, dialogue and logic, if the instructor allows it.",Med,M,Phase 4,To do,,,1.0
+48,Code quality,Room table for getRoomName(),"It hard-codes room boundaries (17, 31, 44) separately from gameMap. Editing the map can silently break the labels.",Med,M,Phase 4,To do,,,1.0
+49,Code quality,One helper for centering math,"showInstructions, showCredits and drawMenu repeat the same padding code.",Low,S,Phase 4,To do,,,1.0
+50,Code quality,Replace magic numbers with constants,"For example the start position 30, 10 and the numbers 8 and 12.",Low,S,Phase 4,To do,,,1.0
+51,Code quality,Symbol-to-handler table in exploreLoop(),Replace the if chain for $ & % ^.,Low,S,Phase 4,To do,,,1.0
+52,Code quality,Group global state into one struct,"Suspects, evidence, notes and counters are separate globals.",Low,M,Phase 4,To do,,,0.5
+53,Code quality,Library rules,"<windows.h>, <termios.h> and <unistd.h> aren't on the beginner list. High impact if the rubric is strict, so ask the instructor.",High,M,Phase 4,To do,,,1.5
+54,Bugs and risks,Multiple adjacent suspects,"With two suspects within 1 tile, the lower index wins, and diagonals count. Pick the nearest instead.",Low,S,Backlog,To do,,,1.0
+55,Bugs and risks,addNote() silently drops notes at MAX_NOTES,"MAX_NOTES is 40 and only about 20 are needed now, so it is safe. Add a warning if topics are added.",Low,S,Backlog,To do,,,1.0
+56,Bugs and risks,Interview-found evidence adds no note,"foundEvidence(..., """") passes an empty note for evidence revealed by a topic.",Low,S,Backlog,To do,,,1.0
+57,Bugs and risks,exit(0) on any read failure,Ends the game with no message.,Low,S,Backlog,To do,,,1.0
+58,Testing and presentation,Hidden debug key,"Reveal all evidence and jump to deduction, for demos and testing.",Med,S,Phase 4,To do,,,2.0
+59,Testing and presentation,Playtest checklist,"All 15 wrong-answer combinations, every topic right and wrong, each rank, a small console, Mac/Linux.",Med,M,Phase 4,To do,,,1.0
+60,Testing and presentation,Golden-path demo script,A scripted run for the presentation.,Med,S,Phase 4,To do,,,2.0
+61,Testing and presentation,Update the flowcharts after changes,Regenerate the four .mmd charts when the code changes.,Low,S,Backlog,To do,,,1.0
