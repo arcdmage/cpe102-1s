@@ -3,8 +3,6 @@ This is our final project for the first semester of CPE102 (Programming Logic an
 
 # An attempt to improve the game, base on our prof suggestion.
 
-#  Moonlit Heist - Improvement Tracker
-
 Tracked via `moonlit_heist_improvements.xlsx`. Below is the summary of planned improvements and current phases.
 
 [![Open Spreadsheet Tracker](https://img.shields.io/badge/Excel%20Tracker-View%20File-blue?style=for-the-badge&logo=microsoft-excel)](./moonlit_heist_improvements.xlsx)
