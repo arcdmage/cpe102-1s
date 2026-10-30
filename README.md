@@ -1,25 +1,38 @@
 # cpe102 final project
 This is our final project for the first semester of CPE102 (Programming Logic and Design) which consists of the combination of the 2 (two) games that we're proposed by fellow members.
 
-# The Moonlit Heist
+# An attempt to improve the game, base on our prof suggestion.
 
-**GENRE**: Mystery, Detective, Puzzle, Turn-based RPG, Dungeoncrawler
+#  Moonlit Heist - Improvement Tracker
 
-**SYNOPSIS**:
-The Moonlit Pearl Earrings have been stolen from a mansion, and you are the detective assigned to solve the case. Examine the case file, question the suspects, and uncover the truth behind the theft. Can you identify the culprit?
+Tracked via `moonlit_heist_improvements.xlsx`. Below is the summary of planned improvements and current phases.
 
-**GAME OBJECTIVE**:
-Identify the thief by examining the case file and questioning the suspects.
+[![Open Spreadsheet Tracker](https://img.shields.io/badge/Excel%20Tracker-View%20File-blue?style=for-the-badge&logo=microsoft-excel)](./moonlit_heist_improvements.xlsx)
 
-**CORE MECHANICS**:
-The game follows a non-linear investigation system, allowing the player to freely move through array-made character movement with real-time updated movement (WASD), navigate between the case file, suspect interviews, and final accusation.
-The player is provided with a case file containing details about the theft, including the time it occurred and the available evidence.
-The player can interview suspects, examine their testimonies, and question their statements to uncover inconsistencies.
-The player can revisit the case file and previously interview suspects at any time.
-When ready, the player can select the option to identify the thief.
-Incorrectly identifying the suspect results in a Game Over, requiring the player to restart the investigation.
-For every “new game” the identity of the thief will change (from NPC1 it could be NPC3 next, or NPC2, etc)
+---
 
+##  Summary by Phase
+
+| Phase | Description / Items | Focus Areas |
+| :--- | :--- | :--- |
+| **Phase 1** (6 items) | High-priority fixes & core flow | Back navigation in deduction, confirmation screens, hotkeys |
+| **Phase 2** (9 items) | Quality of life & session management | Dialogue logs, safe quits, retry mechanics |
+| **Phase 3** (7 items) | Balance & deeper mechanics | Scoring, clues, and balancing |
+| **Phase 4** (10 items) | Content, polish & presentation | Final game loops and UI finish |
+| **Backlog** (29 items) | Future & nice-to-have features | Extended controls, edge cases, minor QoL |
+
+---
+
+## 🚀 Phase 1 Spotlight (High Priority)
+
+| ID | Category | Item | Impact | Effort |
+| :---: | :--- | :--- | :---: | :---: |
+| **1** | Navigation and flow | Back navigation in deduction | High | S |
+| **2** | Navigation and flow | Confirmation screen before submitting | High | S |
+| **3** | Navigation and flow | Dialogue log (L key) | High | M |
+| **4** | Navigation and flow | C and N hotkeys inside interviews & deduction | High | M |
+
+> *To view the full list of all 61 items across all categories, download or view the [moonlit_heist_improvements.xlsx](./moonlit_heist_improvements.xlsx) file directly in the repository.*
 
 # CPE11S1 Group 4 Members
 - Santos
