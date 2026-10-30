@@ -3,13 +3,15 @@ This is our final project for the first semester of CPE102 (Programming Logic an
 
 # An attempt to improve the game, base on our prof suggestion.
 
+# 🌙 Moonlit Heist - Improvement Tracker
+
 Tracked via `moonlit_heist_improvements.xlsx`. Below is the summary of planned improvements and current phases.
 
-[![Open Spreadsheet Tracker](https://img.shields.io/badge/Excel%20Tracker-View%20File-blue?style=for-the-badge&logo=microsoft-excel)](./moonlit_heist_improvements.xlsx)
+[![Open Spreadsheet Tracker](https://img.shields.io/badge/Excel%20Tracker-View%20File-blue?style=for-the-badge&logo=microsoft-excel)](./docs/moonlit_heist_improvements.xlsx)
 
 ---
 
-##  Summary by Phase
+## 📊 Summary by Phase
 
 | Phase | Description / Items | Focus Areas |
 | :--- | :--- | :--- |
@@ -30,7 +32,7 @@ Tracked via `moonlit_heist_improvements.xlsx`. Below is the summary of planned i
 | **3** | Navigation and flow | Dialogue log (L key) | High | M |
 | **4** | Navigation and flow | C and N hotkeys inside interviews & deduction | High | M |
 
-> *To view the full list of all 61 items across all categories, download or view the [moonlit_heist_improvements.xlsx](./moonlit_heist_improvements.xlsx) file directly in the repository.*
+> *To view the full list of all 61 items across all categories, open or download the [moonlit_heist_improvements.xlsx](./docs/moonlit_heist_improvements.xlsx) spreadsheet inside the `docs/` folder.*
 
 # CPE11S1 Group 4 Members
 - Santos
