@@ -7,7 +7,7 @@ This is our final project for the first semester of CPE102 (Programming Logic an
 
 Tracked via `moonlit_heist_improvements.xlsx`. Below is the summary of planned improvements and current phases.
 
-[![Open Spreadsheet Tracker](https://img.shields.io/badge/Excel%20Tracker-View%20File-blue?style=for-the-badge&logo=microsoft-excel)](./docs/moonlit_heist_improvements.xlsx)
+[![Open Spreadsheet Tracker](https://img.shields.io/badge/CSV%20Tracker-View%20Table-blue?style=for-the-badge&logo=github)](./docs/moonlit_heist_improvements.csv)
 
 ---
 
